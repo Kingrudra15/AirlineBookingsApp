@@ -9,7 +9,7 @@
         config/
         repositiory/
 
-    -tests/ lates
+    -tests/ later
     -static/
 
 
