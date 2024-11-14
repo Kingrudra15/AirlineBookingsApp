@@ -1,5 +1,4 @@
 const { CityService } = require('../services/index');
-i
 const cityService = new CityService()
 
 /**
@@ -43,7 +42,7 @@ const destroy = async (req , res) => {
         return res.status(500).json({
             data: {},
             succes: false,
-            messagr: 'notable delete a city',
+            messagr: 'not able delete a city',
             err: error
         });
     }
