@@ -40,3 +40,12 @@
 - A city has many airports but one airport belongs to a city
 - One airport can have many flights, but a flight belongs to one airport
 - 
+
+
+
+## Tables
+
+### city -> id, name, created at , updated at
+### Airport --> id , name , address, city_id, created_at , updated_at
+    Relationship --. City has many airports and airports belongs to a city (one to many)
+ # all db related thing we use sequalize 
