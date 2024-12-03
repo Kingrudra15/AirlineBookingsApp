@@ -20,7 +20,7 @@ const create = async (req , res) => {
         return res.status(500).json({
             data: {},
             succes: false,
-            messagr: 'notable created a city',
+            messagr: 'not able created a city',
             err: error
         });
     }
