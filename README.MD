@@ -49,3 +49,14 @@
 ### Airport --> id , name , address, city_id, created_at , updated_at
     Relationship --. City has many airports and airports belongs to a city (one to many)
  # all db related thing we use sequalize 
+ ```
+ npx sequelize model:generate --name Airport --attributes name:String,address:String,cityID:integer
+```
+```
+to create seeder file
+npx sequelize seed:generate --name add-airports
+```
+```
+SYNC_DB = true use in env when do db sync
+```
+
