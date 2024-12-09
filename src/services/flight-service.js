@@ -1,41 +1,52 @@
-const {FlightRepository, AirplaneRepository} = require('../repository/index')
 
-class  FlightService {
+const { FlightRepository, AirplaneRepository } = require('../repository/index');
+const { compareTime } = require('../utils/helper');
 
-    constructor(){
+class FlightService {
+    constructor() {
         this.airplaneRepository = new AirplaneRepository();
         this.flightRepository = new FlightRepository();
     }
-    async createFlight(data){
+
+    async createFlight(data) {
         try {
-            const airplain = await this.airplaneRepository.getAirplane(data.airplaneId);
+            // Validate time: If arrivalTime is not later than departureTime, throw an error
+            if (!compareTime(data.arrivalTime, data.departureTime)) {
+                throw { error: 'Arrival time cannot be less than or equal to departure time' };
+            }
+
+            // Fetch airplane details
+            const airplane = await this.airplaneRepository.getAirplane(data.airplaneId);
+
+            // Create flight with total seats
             const flight = await this.flightRepository.createFlight({
                 ...data,
-                totalSeats:airplain.capacity
+                totalSeats: airplane.capacity,
             });
+
             return flight;
         } catch (error) {
-            console.log("something went wrong at service layer");
-            throw {error};
+            console.log("Something went wrong at the service layer");
+            throw { error };
         }
     }
+}
 
-    async getFlightData(){
-        //todo
-    }
-    }
+module.exports = FlightService;
+//     /**
+//      * {
+//      * flightnumber,
+//      * airplaneId
+//      * departureAirportId
+//      * arrivalAirportId
+//      * arrivalTime
+//      * departureTime
+//      * price
+//      * total seath---> from airplain
+//      * }
+//      */
 
-    module.exports = FlightService;
-
-    /**
-     * {
-     * flightnumber,
-     * airplaneId
-     * departureAirportId
-     * arrivalAirportId
-     * arrivalTime
-     * departureTime
-     * price
-     * total seath---> from airplain
-     * }
-     */
+//     async getFlightData(){
+//         //todo
+//     }
+//     }
