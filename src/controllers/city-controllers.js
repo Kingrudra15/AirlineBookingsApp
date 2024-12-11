@@ -34,7 +34,7 @@ const destroy = async (req , res) => {
         return res.status(201).json({
             data: response,
             succes: true,
-            messagr: 'succesfully delete a city',
+            message: 'succesfully delete a city',
             err: {}
         });
     } catch (error) {
