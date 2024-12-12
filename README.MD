@@ -61,3 +61,6 @@ SYNC_DB = true use in env when do db sync
 ```
 creation steps
 1. create repo layer-----> 2. service layer-------3.controller layer
+
+MIDDLEWARE CAN HELP TO AUTHEMTICATE REQ IF IT IS RIGHT OR WRONG
+
